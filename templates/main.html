@@ -1,0 +1,32 @@
+
+<p>PDF -> PDF converter. Less page size -> more page numbers and other tricks.
+
+<p>This is nothing more than web interface to excellent k2pdfopt(<a href="http://www.willus.com/archive/">http://www.willus.com/archive/</a>, 
+<a href="http://www.willus.com/archive/k2pdfopt/">http://www.willus.com/archive/k2pdfopt/</a>) utility.
+
+<p><i>"K2pdfopt (Kindle 2 PDF Optimizer) optimizes the format of PDF files for viewing on small (e.g. 6-inch) mobile reader and smartphone screens such as the Kindle's. It is meant for text-based files on a white background which may also have graphics or figures. It is fully automated and can batch-process PDF files. K2pdfopt works by converting each page of the PDF file to a bitmap and then scanning the bitmap for viewable areas (rectangular regions) and cutting and cropping these regions and assembling them into multiple smaller pages without excess margins so that the viewing region is maximized. Any kind of PDF file (best if it has a primarily white background) can be converted. K2pdfopt works especially well on two-column PDF files such as IEEE and other technical journal articles (see examples below--it auto-detects two-column regions on the PDF page), but even single-column files will often be significantly improved and much easier to read (see examples). K2pdfopt has the advantage over other PDF converters in that it fully preserves the rendered PDF fonts and graphics from the original file, unlike programs that convert the PDF to an e-book format. Also, because k2optpdf is completely independent of language or fonts, it will work equally well on documents in any language."</i>
+
+<p>Processing make take long for complex pdf files. Limit is 15 min and 40M post request size now. You can always download k2pdfopt and use it locally.
+
+<p>Default settings are quite good for Kindle devices.
+
+<p>
+<form action="." method="POST" enctype="multipart/form-data">
+
+<table>
+{% for field in form %}
+	{% if field.type != "HiddenField" %}
+	    <tr>
+	        <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+	        <td>{{ field }}</td>
+	    </tr>
+    {% endif %}
+{% endfor %}
+</table> 
+
+ {{ form.hidden_tag() }}
+<input type="submit" value="Process">
+</form>
+
+<p>This web interface source code: <a href="https://bitbucket.org/kittle/w3k2pdfopt">https://bitbucket.org/kittle/w3k2pdfopt</a> . You can run it for yourself easily.
+ 
